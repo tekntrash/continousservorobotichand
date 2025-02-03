@@ -15,4 +15,6 @@ We propose then a time-based approach to control. In this, each finger is previo
 
 To that end, another program reads from that database and keeps a record on the last movement of each finger. This last record is then read, thereby allowing the system to predict the last position of that finger, and move accordingly.
 
-For our tests, we used the widely known 3D printed prosthetic hand available at Thingiverse (https://www.thingiverse.com/thing:1691704). This hand was meant to have only 2 servos, so we adapted it for 5 servos. A simpler solution could be to just use a variation of that which does offer 5 servos (https://www.thingiverse.com/thing:4807141). 
+For our tests, we used the widely known 3D printed prosthetic hand available at Thingiverse (https://www.thingiverse.com/thing:1691704). This hand was meant to have only 2 servos, so we adapted it for 5 servos (see photos). A simpler solution could be to just use a variation of that which does offer 5 servos (https://www.thingiverse.com/thing:4807141). The I2 hand by Inmoov (https://inmoov.fr/hand-i2/) is a much better option, as it employs springs which provide much more precision and durability than the nylon paracord of the previous ones. For servos, we used the inexpensive DS04-NFC
+
+Build a suitable robot hand
