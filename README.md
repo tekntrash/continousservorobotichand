@@ -45,7 +45,7 @@ Our prototype uses inexpensive DS04-NFC servos controlled by a PCA-9685 servo dr
    ```sh
    python measure.py
    ```
-   - The script will move the finger back and forth at random speeds, recording movement times in a file (`servo<channel>.txt`).
+   - The script will move the finger back and forth at random speeds, recording movement times in a file (`servo(channel).txt`).
    - The longer the program runs, the more precise future movements will be.
 5. Repeat the process for each finger.
 
