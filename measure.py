@@ -24,7 +24,7 @@ direction = "IN"
 moveservo=1
 
 # Log file to store runtime information
-log_file = "servo",servo_channel,".txt"
+log_file = "servo"+str(servo_channel)+".txt"
 
 
 #108 to 180
