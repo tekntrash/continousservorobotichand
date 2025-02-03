@@ -1,20 +1,58 @@
-# continousservorobotichand
-Robotic hands usually use servos with some kind of positional control such as potentiometers, resolvers, hall effect sensors, etc in order to know at all times the position of the fingers. This however brings a number of problems:
-1 - Extra layer of complexity
-2 - Increased costs
-3 - Servo horns and positional sensors do not fit into the limited space robotic hands usually have
-4 - Rotation limited to 180 degrees, which can lead to incomplete finger movements
-5 - Lower finger force
+# Continuous Servo Robotic Hand
 
-An alternative approach is the use of linear servos.They offer:
-1 - No limitation on the amount of movement fingers can have
-2 - Higher finger forces
-However, Thesetdo not have any rotational control, depending on external sensors such as the ones described. These brings us then to the original problems of higher costs, complexity, and lack of space.
+Robotic hands typically use servos with positional control mechanisms such as potentiometers, resolvers, or hall effect sensors to track finger positions. However, this approach introduces several challenges:
 
-We propose then a time-based approach to control. In this, each finger is previously tested several times with complete movements in and out and all the entire speed range of the servo. A switch is attached to each side of the tip of each finger, detecting when it reaches its limit. The program then records the time it took for that movement, the servo involved, the speed used, and the direction (in our out). This creates a database of movements which can bs used to, to some accuracy, predict the position of each finger whenever it makes a movement in or out at different speeds. 
+1. Increased complexity
+2. Higher costs
+3. Space constraints for servo horns and positional sensors
+4. Limited rotation (usually up to 180 degrees), restricting finger movement
+5. Reduced finger force
 
-To that end, another program reads from that database and keeps a record on the last movement of each finger. This last record is then read, thereby allowing the system to predict the last position of that finger, and move accordingly.
+### Alternative Approach: Linear Servos
+Linear servos offer distinct advantages:
 
-For our tests, we used the widely known 3D printed prosthetic hand available at Thingiverse (https://www.thingiverse.com/thing:1691704). This hand was meant to have only 2 servos, so we adapted it for 5 servos (see photos). A simpler solution could be to just use a variation of that which does offer 5 servos (https://www.thingiverse.com/thing:4807141). The I2 hand by Inmoov (https://inmoov.fr/hand-i2/) is a much better option, as it employs springs which provide much more precision and durability than the nylon paracord of the previous ones. In this project, we used the inexpensive DS04-NFC servos controlled by a PCA-9685 servo driver attached to a Jetson Orin AGX 64, but any regular Jetson should work.
+1. Unlimited finger movement
+2. Higher force output
 
-Build a suitable robot hand and glue a TS-02 tactile switch in each side of the finger to be studied, as the pictures show. Import the required libraries with the command pip install -r requirements.txt. Edit then the program measure.py with the correct channel of the finger you are training and execute it. It will move the finger back and forth at random speeds, recording the time it took for each movement in a file with the name "servo(servo_channel).txt". The longer this program executes, the more precise will be the movements in the future. Repeat for each finger.
+However, they lack built-in rotational control and require external sensors, leading to the same issues of cost, complexity, and space constraints.
+
+### Time-Based Control Method
+We propose a time-based approach to finger position estimation. This method involves:
+
+1. Calibrating each finger by moving it in and out multiple times at various speeds.
+2. Attaching a tactile switch to the tip of each finger to detect movement limits.
+3. Recording movement duration, servo channel, speed, and direction to build a database of motion profiles.
+4. Using this database to estimate finger positions based on past movement data.
+
+A secondary program continuously updates the last recorded position of each finger based on its most recent movement, allowing the system to predict positioning with reasonable accuracy.
+
+### Hardware and Setup
+For testing, we used the widely known 3D-printed prosthetic hand from Thingiverse:
+- [https://www.thingiverse.com/thing:1691704](https://www.thingiverse.com/thing:1691704) (modified for 5 servos)
+- Alternative: [https://www.thingiverse.com/thing:4807141](https://www.thingiverse.com/thing:4807141) (designed for 5 servos)
+- Best option: [Inmoov I2 Hand](https://inmoov.fr/hand-i2/) (spring-based for improved precision and durability)
+
+Our prototype uses inexpensive DS04-NFC servos controlled by a PCA-9685 servo driver, connected to a Jetson Orin AGX 64. However, any Jetson board should work.
+
+### How to Use
+1. Assemble a suitable robotic hand and attach a TS-02 tactile switch to both sides of each finger.
+2. Install the required libraries:
+   ```sh
+   pip install -r requirements.txt
+   ```
+3. Edit `measure.py` to specify the correct servo channel for the finger being trained.
+4. Run the program:
+   ```sh
+   python measure.py
+   ```
+   - The script will move the finger back and forth at random speeds, recording movement times in a file (`servo<channel>.txt`).
+   - The longer the program runs, the more precise future movements will be.
+5. Repeat the process for each finger.
+
+### Future Improvements
+- Enhancing position estimation accuracy with additional sensors or feedback mechanisms.
+- Implementing machine learning for adaptive motion prediction.
+- Exploring alternative servo and motor options for better performance.
+
+This project aims to create a more cost-effective and flexible control system for robotic hands, removing the limitations of traditional position-controlled servos.
+
