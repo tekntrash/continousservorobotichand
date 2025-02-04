@@ -40,14 +40,15 @@ Our prototype uses inexpensive DS04-NFC servos controlled by a PCA-9685 servo dr
    ```sh
    pip install -r requirements.txt
    ```
-3. Edit `measure.py` to specify the correct servo channel for the finger being trained.
-4. Run the program:
+3. Run the program "testbuttons.py" to ensure both buttons work seamlessly, as otherwise the finger will reach the end and stress the servo
+4. Edit `measure.py` to specify the correct servo channel for the finger being trained.
+5. Run the program:
    ```sh
    python measure.py
    ```
    - The script will move the finger back and forth at random speeds, recording movement times in a file (`servo(channel).txt`).
    - The longer the program runs, the more precise future movements will be.
-5. Repeat the process for each finger.
+6. Repeat the process for each finger.
 
 ### Future Improvements
 - Enhancing position estimation accuracy with additional sensors or feedback mechanisms.
