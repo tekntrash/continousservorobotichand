@@ -35,7 +35,7 @@ For testing, we used the widely known 3D-printed prosthetic hand from Thingivers
 Our prototype uses inexpensive DS04-NFC servos controlled by a PCA-9685 servo driver, connected to a Jetson Orin AGX 64. However, any Jetson board should work.
 
 ### How to Use
-1. Assemble a suitable robotic hand and attach a TS-02 tactile switch to both sides of each finger.
+1. Assemble a suitable robotic hand and attach a TS-02 tactile switch to both sides of each finger (see photos). For more accuracy, instead of buttons HAL effect sensors can be used. Note that the buttons need to use pull-up resistors, as Jetsons do not have these in their GPIO ports like Arduino boards: look at the schematic and photos and ensure you test the buttons with the testbutton.py code included: the code use GPIO 16 and 18, but it can be altered 
 2. Install the required libraries:
    ```sh
    pip install -r requirements.txt
