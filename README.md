@@ -19,8 +19,8 @@ However, they lack built-in rotational control and require external sensors, lea
 ### Time-Based Control Method
 We propose a time-based approach to finger position estimation. This method involves:
 
-1. Calibrating each finger by moving it in and out multiple times at various speeds.
-2. Attaching a tactile switch to the tip of each finger to detect movement limits.
+1. Attaching a tactile switch to the tip of each finger to detect movement limits, reversing the movement.
+2. Calibrating each finger by moving it in and out multiple times at various speeds.
 3. Recording movement duration, servo channel, speed, and direction to build a database of motion profiles.
 4. Using this database to estimate finger positions based on past movement data.
 
